@@ -17,7 +17,7 @@ jobs:
       - run:
           name: Build Docker Image
           command: |
-            docker build -t projet_node:latest .
+            docker build -t projet_node .
 
       # Authenticate with Docker Hub (or your preferred registry)
       - run:
