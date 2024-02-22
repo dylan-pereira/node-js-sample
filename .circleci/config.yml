@@ -31,3 +31,18 @@ jobs:
           command: |
             docker tag projet_node:latest $DOCKER_USERNAME/projet_node:latest
             docker push $DOCKER_USERNAME/projet_node:latest
+
+      # Run tests
+      - run:
+          name: Test Docker Container
+          command: |
+            docker run -d -p 8080:8080 your_image_name:latest
+            sleep 10 # Wait for the container to start
+            response=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:8080/your-route) # Send a request to your route
+            if [ $response -eq 200 ]; then
+              echo "Test passed: Server responded successfully"
+              exit 0
+            else
+              echo "Test failed: Server did not respond as expected"
+              exit 1
+            fi
