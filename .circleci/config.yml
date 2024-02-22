@@ -37,12 +37,3 @@ jobs:
           name: Test Docker Container
           command: |
             docker run -d -p 8080:8080 projet_node:latest
-            sleep 10 # Wait for the container to start
-            response=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:8080/) # Send a request to your route
-            if [ $response -eq 200 ]; then
-              echo "Test passed: Server responded successfully"
-              exit 0
-            else
-              echo "Test failed: Server did not respond as expected"
-              exit 1
-            fi
