@@ -17,7 +17,7 @@ jobs:
       - run:
           name: Build Docker Image
           command: |
-            docker build -t your_image_name:latest .
+            docker build -t projet_node:latest .
 
       # Authenticate with Docker Hub (or your preferred registry)
       - run:
@@ -28,5 +28,5 @@ jobs:
       - run:
           name: Push Docker Image
           command: |
-            docker tag your_image_name:latest $DOCKER_USERNAME/your_image_name:latest
-            docker push $DOCKER_USERNAME/your_image_name:latest
+            docker tag projet_node:latest $DOCKER_USERNAME/projet_node:latest
+            docker push $DOCKER_USERNAME/projet_node:latest
